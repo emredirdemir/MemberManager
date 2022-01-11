@@ -1,0 +1,53 @@
+﻿@model IEnumerable<MemberManager.Models.Session>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Ekle</a>
+</p>
+<table class="table table-borderless table-dark">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LessonName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Instructor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quota)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LessonName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Instructor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quota)
+            </td>
+            <td>
+                        <a asp-route-id="@item.Id" asp-action="Edit" type="submit" class="btn btn-primary">Güncelle</a> |
+                        <a asp-route-id="@item.Id" asp-controller="SessionDetail" asp-action="Index" type="submit" class="btn btn-primary">Öğrenciler</a> |
+                        <a asp-route-id="@item.Id" asp-action="Delete" type="submit" class="btn btn-danger">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
